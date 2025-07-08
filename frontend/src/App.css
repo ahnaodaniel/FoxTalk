@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #8B5CF6 0%, #F59E0B 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-container, .feed-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fox Logo - Emoji Simples */
+.fox-logo {
+  margin-bottom: 20px;
+}
+
+.fox-emoji {
+  font-size: 4rem;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.title {
+  color: #8B5CF6;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-shadow: 2px 2px 4px rgba(139, 92, 246, 0.2);
+}
+
+.subtitle {
+  color: #6B7280;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.login-form {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #E5E7EB;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #8B5CF6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.input-group input::placeholder {
+  color: #9CA3AF;
+}
+
+.input-group input:disabled {
+  background: #F3F4F6;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #8B5CF6 0%, #F59E0B 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link {
+  color: #8B5CF6;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #F59E0B;
+  text-decoration: underline;
+}
+
+/* Feed Styles */
+.feed-box {
+  background: linear-gradient(135deg, #FEF3C7 0%, #F3E8FF 100%);
+  border: 2px solid #F59E0B;
+  border-radius: 15px;
+  padding: 25px;
+  margin: 20px 0;
+  box-shadow: 0 8px 16px rgba(245, 158, 11, 0.2);
+}
+
+.feed-box h2 {
+  color: #8B5CF6;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.feed-box p {
+  color: #6B7280;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.feed-box p:last-child {
+  margin-bottom: 0;
+  font-weight: 500;
+  color: #8B5CF6;
+}
+
+.logout-btn {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.3);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-container, .feed-container {
+    padding: 30px 20px;
+    margin: 10px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .fox-emoji {
+    font-size: 3rem;
+  }
+  
+  .feed-box {
+    padding: 20px;
+  }
+  
+  .feed-box h2 {
+    font-size: 1.3rem;
+  }
+}

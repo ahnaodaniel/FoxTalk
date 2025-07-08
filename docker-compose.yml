@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Banco de Dados PostgreSQL
+  postgres:
+    image: postgres:15
+    container_name: foxtalk-postgres
+    environment:
+      POSTGRES_DB: foxtalk
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - foxtalk-network
+    restart: unless-stopped
+
+  # Backend Node.js/Express
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: foxtalk-backend
+    environment:
+      - DB_USER=postgres
+      - DB_HOST=postgres
+      - DB_NAME=foxtalk
+      - DB_PASSWORD=password
+      - DB_PORT=5432
+      - PORT=5000
+      - JWT_SECRET=foxtalk-super-secret-key-change-in-production
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+    networks:
+      - foxtalk-network
+    restart: unless-stopped
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+
+
+volumes:
+  postgres_data:
+
+networks:
+  foxtalk-network:
+    driver: bridge 
